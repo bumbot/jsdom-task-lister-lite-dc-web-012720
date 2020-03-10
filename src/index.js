@@ -29,6 +29,7 @@ function addTask(string) {
   deleteButton.className = `funny-class-${count}`
   deleteButton.addEventListener("click", deleteListItem)
 
+
   listItem.innerText = string;
 
   form.appendChild(listItem);
