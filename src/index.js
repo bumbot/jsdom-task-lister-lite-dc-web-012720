@@ -1,15 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   getForm().addEventListener("submit", processFormSubmit)
-
-  
 });
-
-
-// event.preventDefault
-
-function getForm() {
-  return document.getElementById("create-task-form");
-}
 
 function processFormSubmit(event) {
   event.preventDefault();
@@ -20,14 +11,9 @@ function processFormSubmit(event) {
 }
 
 function deleteListItem(event) {
-  event.preventDefault();
-  debugger
-  let button = event.target.id;
-
+  let funnyClass = event.target.className;
+  document.querySelectorAll(`.${funnyClass}`).forEach(e => e.remove());
 }
-
-
-
 
 /*
   creating <li> tag in to-do list
@@ -35,23 +21,23 @@ function deleteListItem(event) {
 
 function addTask(string) {
   let form = getList();
-
-
   let listItem = document.createElement("li");
+  let count = document.querySelectorAll("li").length + 1;
   let deleteButton = document.createElement("button");
-  deleteButton.addEventListener("onclick", (event) => {
-    event.target
-  });
+  deleteButton.innerText = "DELETE"
+  listItem.className = `funny-class-${count}`
+  deleteButton.className = `funny-class-${count}`
+  deleteButton.addEventListener("click", deleteListItem)
 
   listItem.innerText = string;
-
-  // listItem.appendChild(newLI);
 
   form.appendChild(listItem);
   form.appendChild(deleteButton);
 }
 
-
+function getForm() {
+  return document.getElementById("create-task-form");
+}
 
 function getList() {
   return document.getElementById("tasks");
