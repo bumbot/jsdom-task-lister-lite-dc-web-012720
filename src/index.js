@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.addEventListener("submit", processFormSubmit)
+  getForm().addEventListener("submit", processFormSubmit)
 });
 
 
@@ -15,13 +15,16 @@ function getFormInfo() {
 
 function processFormSubmit(event) {
   event.preventDefault;
-  debugger
-  let toDo = event.target.value;
+  let toDo = event.target.aa.value;
+  
+  addTask(toDo);
 }
 
+
+
+
 /*
-
-
+  creating <li> tag in to-do list
 */
 
 function addTask(string) {
