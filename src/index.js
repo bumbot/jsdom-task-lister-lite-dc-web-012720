@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   getForm().addEventListener("submit", processFormSubmit)
+
+  
 });
 
 
@@ -9,15 +11,19 @@ function getForm() {
   return document.getElementById("create-task-form");
 }
 
-function getFormInfo() {
-
-}
-
 function processFormSubmit(event) {
-  event.preventDefault;
+  event.preventDefault();
   let toDo = event.target.aa.value;
   
   addTask(toDo);
+  event.target.reset();
+}
+
+function deleteListItem(event) {
+  event.preventDefault();
+  debugger
+  let button = event.target.id;
+
 }
 
 
@@ -28,13 +34,23 @@ function processFormSubmit(event) {
 */
 
 function addTask(string) {
+  let form = getList();
+
+
   let listItem = document.createElement("li");
-  let newLI = document.createTextNode(string);
+  let deleteButton = document.createElement("button");
+  deleteButton.addEventListener("onclick", (event) => {
+    event.target
+  });
 
-  listItem.appendChild(newLI);
+  listItem.innerText = string;
 
-  getList().appendChild(listItem);
+  // listItem.appendChild(newLI);
+
+  form.appendChild(listItem);
+  form.appendChild(deleteButton);
 }
+
 
 
 function getList() {
